@@ -58,9 +58,14 @@ public class DatePicker extends DialogFragment
     @Override
     public void onDateSet(android.widget.DatePicker datePicker, int year,
             int month, int day) {
-        if(!isCalled) {
-            mSuccessCallback.invoke(year, month, day);
-        }
-        isCalled = true;
+          Calendar cal = Calendar.getInstance();
+          cal.set(Calendar.YEAR, year);
+          cal.set(Calendar.MONTH, month);
+          cal.set(Calendar.DAY_OF_MONTH, day);
+          if(!isCalled) {
+            int timestamp = (int) (cal.getTimeInMillis() / 1000);
+            mSuccessCallback.invoke(timestamp);
+          }
+          isCalled = true;
     }
 }

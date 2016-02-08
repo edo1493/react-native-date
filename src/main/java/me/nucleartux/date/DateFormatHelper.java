@@ -32,7 +32,7 @@ public class DateFormatHelper {
     {
       try
       {
-        initialDate.setTimeInMillis(ms);
+        initialDate.setTimeInMillis(ms * 1000);
       }
       catch (Exception e)
       {
